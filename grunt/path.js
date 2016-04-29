@@ -3,4 +3,4 @@ module.exports = {
     dist: 'dist',
     tmp: '.tmp',
     docs: 'docs'
-};
+}

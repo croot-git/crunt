@@ -1,4 +1,4 @@
-# jit-grunt 0.9.1 [![NPM version](https://badge.fury.io/js/jit-grunt.png)](http://badge.fury.io/js/jit-grunt) [![Build Status](https://secure.travis-ci.org/shootaroo/jit-grunt.png?branch=master)](http://travis-ci.org/shootaroo/jit-grunt) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# jit-grunt 0.10.0 [![NPM version](https://badge.fury.io/js/jit-grunt.png)](http://badge.fury.io/js/jit-grunt) [![Build Status](https://secure.travis-ci.org/shootaroo/jit-grunt.png?branch=master)](http://travis-ci.org/shootaroo/jit-grunt) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 A JIT(Just In Time) plugin loader for Grunt.  
 Load time of Grunt does not slow down even if there are many plugins.
@@ -104,12 +104,19 @@ require('jit-grunt')(grunt, {
 
 ### Options
 
+#### cwd
+
+Type: `Strong`
+Default: `process.cwd()`
+
+All plugins and tasks are resolved relative to this path.
+
 #### pluginsRoot
 
 Type: `String`  
 Default: `'node_modules'`
 
-Root directory of grunt plugins.
+Root directory of grunt plugins, relative to the working directory.
 
 ```js
 require('jit-grunt')(grunt)({
@@ -122,7 +129,7 @@ require('jit-grunt')(grunt)({
 Type: `String`  
 Default: `null`
 
-JIT Loading for custom tasks dir (replacement of [grunt.loadTasks]).
+JIT Loading for custom tasks dir (replacement of [grunt.loadTasks]), relative to the working directory..
 
 ```js
 require('jit-grunt')(grunt)({
@@ -147,6 +154,8 @@ https://github.com/shootaroo/jit-grunt/tree/master/example
 
 ## Release History
 
+- 2016-02-23  v0.10.0   Add option cwd.
+- 2015-02-02   v0.9.1   Support npm private modules.
 - 2014-10-15   v0.9.0   Support parent directories of node_modules.
 - 2014-08-07   v0.8.0   Support grunt.registerTask in plugin #19.
 - 2014-08-07   v0.7.1   Fix log output.

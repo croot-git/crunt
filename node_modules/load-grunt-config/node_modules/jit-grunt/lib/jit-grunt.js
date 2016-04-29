@@ -1,4 +1,7 @@
 'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 var fs = require('fs');
 var path = require('path');
 
@@ -7,9 +10,9 @@ var EXTENSIONS = ['.coffee', '.js'];
 
 var jit = {
   pluginsRoot: 'node_modules',
-  mappings: {}
+  mappings: {},
+  cwd: process.cwd()
 };
-
 
 jit.findUp = function (cwd, iterator) {
   var result = iterator(cwd);
@@ -20,70 +23,72 @@ jit.findUp = function (cwd, iterator) {
   return parent !== cwd ? jit.findUp(parent, iterator) : null;
 };
 
-
 jit.findPlugin = function (taskName) {
-  var pluginName, taskPath;
+  var _this = this;
+
+  var pluginName = undefined,
+      taskPath = undefined;
 
   // Static Mappings
   if (this.mappings.hasOwnProperty(taskName)) {
     pluginName = this.mappings[taskName];
     if (pluginName.indexOf('/') >= 0 && pluginName.indexOf('@') !== 0) {
-      taskPath = path.resolve(pluginName);
+      taskPath = path.resolve(this.cwd, pluginName);
       if (fs.existsSync(taskPath)) {
-        return jit.loadPlugin(taskName, taskPath, true);
+        return this.loadPlugin(taskName, taskPath, true);
       }
     } else {
-      var dir = path.join(jit.pluginsRoot, pluginName, 'tasks');
-      taskPath = jit.findUp(path.resolve(), function (cwd) {
-        var findPath = path.join(cwd, dir);
-        return fs.existsSync(findPath) ? findPath : null;
-      });
-      if (taskPath) {
-        return jit.loadPlugin(pluginName, taskPath);
-      }
+      var _ret = function () {
+        var dir = path.join(_this.pluginsRoot, pluginName, 'tasks');
+        taskPath = _this.findUp(_this.cwd, function (cwd) {
+          var findPath = path.join(cwd, dir);
+          return fs.existsSync(findPath) ? findPath : null;
+        });
+        if (taskPath) {
+          return {
+            v: _this.loadPlugin(pluginName, taskPath)
+          };
+        }
+      }();
+
+      if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
     }
   }
 
   // Custom Tasks
-  if (jit.customTasksDir) {
+  if (this.customTasksDir) {
     for (var i = EXTENSIONS.length; i--;) {
-      taskPath = path.join(jit.customTasksDir, taskName + EXTENSIONS[i]);
+      taskPath = path.join(this.customTasksDir, taskName + EXTENSIONS[i]);
       if (fs.existsSync(taskPath)) {
-        return jit.loadPlugin(taskName, taskPath, true);
+        return this.loadPlugin(taskName, taskPath, true);
       }
     }
   }
 
   // Auto Mappings
   var dashedName = taskName.replace(/([A-Z])/g, '-$1').replace(/_+/g, '-').toLowerCase();
-  taskPath = jit.findUp(path.resolve(), function (cwd) {
+  taskPath = this.findUp(this.cwd, function (cwd) {
     for (var p = PREFIXES.length; p--;) {
       pluginName = PREFIXES[p] + dashedName;
-      var findPath = path.join(cwd, jit.pluginsRoot, pluginName, 'tasks');
+      var findPath = path.join(cwd, _this.pluginsRoot, pluginName, 'tasks');
       if (fs.existsSync(findPath)) {
         return findPath;
       }
     }
   });
   if (taskPath) {
-    return jit.loadPlugin(pluginName, taskPath);
+    return this.loadPlugin(pluginName, taskPath);
   }
 
-  var log = jit.grunt.log.writeln;
-  log();
-  log('jit-grunt: Plugin for the "'.yellow + taskName.yellow + '" task not found.'.yellow);
-  log('If you have installed the plugin already, please setting the static mapping.'.yellow);
-  log('See'.yellow, 'https://github.com/shootaroo/jit-grunt#static-mappings'.cyan);
-  log();
+  this.grunt.log.writeln(('\njit-grunt: Plugin for the "' + taskName + '" task not found.\nIf you have installed the plugin already, please setting the static mapping.\nSee').yellow, 'https://github.com/shootaroo/jit-grunt#static-mappings\n'.cyan);
 };
 
-
 jit.loadPlugin = function (name, path, isFile) {
-  var grunt = jit.grunt;
+  var grunt = this.grunt;
   var _write = grunt.log._write;
   var _nameArgs = grunt.task.current.nameArgs;
   grunt.task.current.nameArgs = 'loading ' + name;
-  if (jit.hideHeader) {
+  if (this.hideHeader) {
     grunt.log._write = function () {};
   }
   grunt.log.header('Loading "' + name + '" plugin');
@@ -100,12 +105,11 @@ jit.loadPlugin = function (name, path, isFile) {
   grunt.task.current.nameArgs = _nameArgs;
 };
 
-
 jit.proxy = function (name) {
   return {
     task: {
       name: name,
-      fn: function () {
+      fn: function fn() {
         var thing = jit._taskPlusArgs.call(jit.grunt.task, name);
         if (!thing.task) {
           jit.findPlugin(thing.args[0]);
@@ -128,8 +132,7 @@ jit.proxy = function (name) {
   };
 };
 
-
-module.exports = function factory(grunt, mappings) {
+module.exports = function (grunt, mappings) {
   if (!jit.grunt) {
     jit.grunt = grunt;
     jit.hideHeader = !grunt.option('verbose');
