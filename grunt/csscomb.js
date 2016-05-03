@@ -1,6 +1,6 @@
 module.exports = {
 	options: {
-		config: '.csscomb.json'
+		config: '<%= path.conf %>/.csscomb.json'
 	},
     dist: {
 		expand: true,

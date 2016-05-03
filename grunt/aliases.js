@@ -1,24 +1,27 @@
 module.exports = {
-	'test' : [
+	'test': [
 		'clean',
-		'autoprefixer:dist',
-		'csscomb:dist',
-		'cssmin:target'
+		'uglify:dist',
+		'concat:dist'
 	],
-	'html' : [
+	'html': [
 		'includes:files'
 	],
-	'css' : [
+	'css': [
 		'autoprefixer:dist',
 		'csscomb:dist',
 		'cssmin'
 	],
-	'lint' : [
+	'js': [
+		'concat:dist',
+		'uglify:dist'
+	],
+	'lint': [
 		'htmlhint',
 		'csslint',
 		'jshint'
 	],
-	'default' : [
+	'default': [
 		'connect'
 	]
 }
