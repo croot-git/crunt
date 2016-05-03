@@ -3,7 +3,7 @@
 @import url("common.css");
 @import url("layout.css");
 
-.searchWrap {overflow:hidden;margin-top:39px;}
+.searchWrap {overflow:hidden margin-top:39px;}
 .searchWrap .total {float:left; line-height:20px;}
 .searchWrap .newsSearch {float:right;}
 .searchWrap .newsSearch * {vertical-align:top;}
