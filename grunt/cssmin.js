@@ -2,13 +2,13 @@ module.exports = {
 	options: {
 		shorthandCompacting: false,
 		roundingPrecision: -1,
-		sourceMap: true,
+		sourceMap: false,
 		debug: true
 	},
 	target: {
 		files: [{
 			expand: true,
-			cwd: '<%= path.tmp %>',
+			cwd: '<%= path.tmpdist %>',
 			src: ['**/*.css', '**/!*.min.css'],
 			dest: '<%= path.dist %>',
 			ext: '.min.css'

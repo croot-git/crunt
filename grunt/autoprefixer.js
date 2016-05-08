@@ -5,6 +5,10 @@ module.exports = {
 		browsers: ['last 2 versions', 'ie 8', 'ie 9']
 	},
 	dist: {
-        src: '<%= path.tmp %>/**/*.css'
+		expand: true,
+        cwd: '<%= path.tmpdist %>',
+		src: ['**/*.css', '**/!*.min.css'],
+		dest: '<%= path.tmpdist %>',
+		ext: '.css'
 	}
 }

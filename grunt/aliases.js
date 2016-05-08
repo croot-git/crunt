@@ -9,7 +9,7 @@ module.exports = {
 		'sass:dist',
 		'csscomb:dist',
 		'autoprefixer:dist',
-		'cssmin'
+		'cssmin:target'
 	],
 	'js': [
 		'concat:dist',

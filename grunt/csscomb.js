@@ -3,7 +3,12 @@ module.exports = {
 		config: '<%= path.conf %>/.csscomb.json'
 	},
     dist: {
-		expand: true,
-        src: '<%= path.tmp %>/**/*.css'
+		files: [{
+			expand: true,
+			cwd: '<%= path.tmpdist %>',
+			src: ['**/*.css','**/!*.min.css'],
+			dest: '<%= path.tmpdist %>',
+			ext: '.css'
+		}]
     }
 }
