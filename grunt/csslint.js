@@ -6,12 +6,12 @@ module.exports = {
 		formatters: [
 			{
 				id: 'text',
-				dest: 'docs/csslint.txt'
+				dest: '<%= path.doc %>/csslint.txt'
 			}
 		],
 		
 	},
 	dist: {		
-        src: '<%= path.src %>/css/**/*.{scss,css}'
+        src: '<%= path.src %>/**/*.css'
     }
 }

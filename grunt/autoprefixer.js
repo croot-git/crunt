@@ -10,5 +10,15 @@ module.exports = {
 		src: ['**/*.css', '**/!*.min.css'],
 		dest: '<%= path.tmpdist %>',
 		ext: '.css'
+	},
+	dev: {
+		options: {
+			map: true
+		},
+		expand: true,
+        cwd: '<%= path.tmpdev %>',
+		src: ['**/*.css', '**/!*.min.css'],
+		dest: '<%= path.tmpdev %>',
+		ext: '.css'
 	}
 }

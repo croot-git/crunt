@@ -1,7 +1,27 @@
 module.exports = {
 	'test': [
-		'sass'
+		'includes:dist'
 	],
+	'default': [
+		'clean:build',
+		'sass:dev',
+		'csscomb:dev',
+		'autoprefixer:dev',
+//		'csslint:dev',
+//		'jshint:dev',
+		'includes:dev',
+		'connect:server'
+	],
+	'dist': [
+		'clean:dist',
+		'sass:dist',
+		'csscomb:dist',
+		'autoprefixer:dist',
+		'cssmin:target',
+		'uglify:dist',
+		'includes:files'
+	],
+/////////////////////////////////
 	'html': [
 		'includes:files'
 	],
@@ -18,9 +38,6 @@ module.exports = {
 	'lint': [
 		'htmlhint',
 		'csslint',
-		'jshint'
-	],
-	'default': [
-		'connect'
+		'jshint:dist'
 	]
 }
