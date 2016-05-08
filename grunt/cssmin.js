@@ -8,9 +8,9 @@ module.exports = {
 	target: {
 		files: [{
 			expand: true,
-			cwd: '<%= csscomb.dist.dest %>',
+			cwd: '<%= path.tmp %>',
 			src: ['**/*.css', '**/!*.min.css'],
-			dest: '<%= path.dist %>/css/',
+			dest: '<%= path.dist %>',
 			ext: '.min.css'
 		}]
 	}

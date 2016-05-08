@@ -1,15 +1,14 @@
 module.exports = {
 	'test': [
-		'clean',
-		'uglify:dist',
-		'concat:dist'
+		'sass'
 	],
 	'html': [
 		'includes:files'
 	],
 	'css': [
-		'autoprefixer:dist',
+		'sass:dist',
 		'csscomb:dist',
+		'autoprefixer:dist',
 		'cssmin'
 	],
 	'js': [

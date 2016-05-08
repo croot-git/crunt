@@ -1,9 +1,6 @@
 module.exports = {
 	dist: {
-		expand: true,
-		cwd: '<%= uglify.dist.dest %>',
-		src: '**/*.js',
-		dest: '<%= path.dist %>',
-		ext: '.min.js'
+		src: '<%= path.src %>/js/*.js',
+		dest: '<%= path.dist %>/common.js'
 	}
 }

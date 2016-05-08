@@ -4,9 +4,6 @@ module.exports = {
 	},
     dist: {
 		expand: true,
-		cwd : '<%= autoprefixer.dist.dest %>',
-        src: '**/*.css',
-        dest: '<%= path.tmp %>/csscomb/',
-		ext: '.css'
+        src: '<%= path.tmp %>/**/*.css'
     }
 }

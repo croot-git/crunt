@@ -1,11 +1,13 @@
 module.exports = {
     options: {
-        banner: '<%= banner %>'
+		//preserveComments:  function(node, comment) { return /^!/.test( comment.value ); },
+		preserveComments: /(?:^!|@(?:license|preserve|cc_on))/
+		//report: 'gzip',
     },
     dist: {
 		expand: true,
-        cwd: '<%= path.src %>',
-		src: ['!**/*.min.js','**/*.js'],
-        dest: '<%= path.tmp %>'
+        cwd: '<%= concat.dist.dest %>',
+		src: 'js/*.js',
+        dest: '<%= path.dist %>'
     }
 }

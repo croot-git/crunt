@@ -3,12 +3,13 @@ module.exports = {
 		jshintrc: '<%= path.conf %>/.jshintrc',
         force: true,
         reporter: require('jshint-html-reporter'), // output을 수정 할 수 있는 옵션
-		reporterOutput: '<%= path.docs %>/jshint.html'
+		reporterOutput: '<%= path.docs %>/jshint.html',
+		'-W': true
     },
     dist: {
         expand: true,
         cwd: '<%= path.src %>/js/',
-        src: ['**/*.js'],
+        src: ['*.js'],
         dest: '<%= path.tmp %>/js/'
     }
 }
