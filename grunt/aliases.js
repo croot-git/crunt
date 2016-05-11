@@ -1,19 +1,22 @@
 module.exports = {
 	'test': [
-		'includes:dist'
+		'sprite:dev'
 	],
 	'default': [
 		'clean:build',
+		'copy:dev',
 		'sass:dev',
 		'csscomb:dev',
 		'autoprefixer:dev',
-//		'csslint:dev',
-//		'jshint:dev',
+		'csslint:dev',
+		'jshint:dev',
+//		'sprite:dev',
 		'includes:dev',
 		'connect:server'
 	],
 	'dist': [
 		'clean:dist',
+		'copy:dist',
 		'sass:dist',
 		'csscomb:dist',
 		'autoprefixer:dist',
@@ -21,7 +24,8 @@ module.exports = {
 		'uglify:dist',
 		'includes:files'
 	],
-/////////////////////////////////
+	'webfont': []
+/*******************************
 	'html': [
 		'includes:files'
 	],
@@ -40,4 +44,5 @@ module.exports = {
 		'csslint',
 		'jshint:dist'
 	]
+*******************************/
 }

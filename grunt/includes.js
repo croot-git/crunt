@@ -9,7 +9,7 @@ module.exports = {
 		expand: true,
 		cwd: '<%= path.src %>',
 		src: '**/*.{htm,html}',
-		dest: '<%= path.tmpdist %>'
+		dest: '<%= path.dist %>'
 	},
 	dev: {
 		flatten: true,

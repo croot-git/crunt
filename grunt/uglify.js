@@ -6,8 +6,13 @@ module.exports = {
     },
     dist: {
 		expand: true,
-        cwd: '<%= concat.dist.dest %>',
-		src: 'js/*.js',
-        dest: '<%= path.dist %>'
+        cwd: '<%= path.src %>',
+		src: [
+			'**/*.js',
+			'!**/{lib,libs}/*.js',
+			'!**/*.min.js'
+		],
+        dest: '<%= path.dist %>',
+		ext: '.min.js'
     }
 }

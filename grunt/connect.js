@@ -3,7 +3,7 @@ module.exports = {
 		options: {
 			port: 8080,
 			base: ['<%= path.tmpdev %>'],
-//			directory: '<%= path.tmpdev %>',
+			directory: '.',
 //			open: true,
 			keepalive: true,
 //			livereload: true

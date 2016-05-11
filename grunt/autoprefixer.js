@@ -7,7 +7,7 @@ module.exports = {
 	dist: {
 		expand: true,
         cwd: '<%= path.tmpdist %>',
-		src: ['**/*.css', '**/!*.min.css'],
+		src: ['**/*.css', '!**/*.min.css'],
 		dest: '<%= path.tmpdist %>',
 		ext: '.css'
 	},
@@ -17,7 +17,7 @@ module.exports = {
 		},
 		expand: true,
         cwd: '<%= path.tmpdev %>',
-		src: ['**/*.css', '**/!*.min.css'],
+		src: ['**/*.css','!**/*.min.css'],
 		dest: '<%= path.tmpdev %>',
 		ext: '.css'
 	}
