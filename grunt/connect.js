@@ -1,12 +1,11 @@
 module.exports = {
 	server : {
 		options: {
+			protocol: 'http',
 			port: 8080,
+			useAvailablePort: true,
 			base: ['<%= path.tmpdev %>'],
-			directory: '.',
-//			open: true,
-			keepalive: true,
-//			livereload: true
+			open: true,
 		}
 	}
 }

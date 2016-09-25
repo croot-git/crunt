@@ -1,0 +1,30 @@
+{
+	"mysearchFilter": {
+		"/us/tvs" : {
+			"OLED TV":"FV06942345",
+			"Ultra HD":"FV06942342",
+			"Smart TV":"FV06942353",
+			"3D TV":"FV06942312",
+			"LED TV":"FV06942348"
+		},
+		"/us/washer" : {
+			"Front Loader":"FV06942345",
+			"Top Loader":"FV06942342"
+		},
+		"/us/refrigerator" : {
+			"French Door":"FV06942345",
+			"Side-by-Side":"FV06942342",
+			"Bottom Freezer":"FV06942353",
+			"Top Freezer":"FV06942312",
+			"Under(19cu ft)":"FV06942348",
+			"Large(20-24 cu ft)":"FV06942348",
+			"Ultra-Large(25-29 cu ft)":"FV06942348",
+			"Super(30-31 cu ft)":"FV06942348",
+			"Mega(32+ cu ft)":"FV06942348",
+			"Door-in-Door":"FV06942348",
+			"Counter Depth":"FV06942348",
+			"Ice&Water Dispenser":"FV06942348"
+
+		}
+	}
+}

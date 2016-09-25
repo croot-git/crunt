@@ -2,7 +2,8 @@ module.exports = {
 	options: {
 		style: 'compact',
 		noCache: true,
-		update: true
+		update: true,
+		usemap: false
 	},
 	dist: {
 		expand: true,

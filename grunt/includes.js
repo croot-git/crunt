@@ -1,21 +1,32 @@
 module.exports = {
 	options: {
-		// regexp :: <!-- include "filename" -->
-		includeRegexp: /^\s*<!--\s*include\s+"(\S+)"\s*-->\s*$/,
-		silent: true
-	},
-	files: {
-		flatten: true,
-		expand: true,
-		cwd: '<%= path.src %>',
-		src: '**/*.{htm,html}',
-		dest: '<%= path.dist %>'
+		includePath: '<%= path.src %>',
+		//includeRegexp: /^\s*<!--\s*include\s+"(\S+)"\s*-->\s*$/, // <!-- include "FILENAME" -->
+		includeRegexp: /^\s*<!--\#include\svirtual\=+"(\S+)"\s*-->\s*$/, // <!--#include virtual="FILENAME" -->
+		duplicates: true,
+		silent: true,
 	},
 	dev: {
-		flatten: true,
-		expand: true,
-		cwd: '<%= path.src %>',
-		src: '**/*.{htm,html}',
-		dest: '<%= path.tmpdev %>'
+		options: {
+			debug: true,
+			flatten: true,
+			expand: true,
+		},
+		files: [{
+			cwd: '<%= path.src %>',
+			src: '**/*.{htm,html,incl}',
+			dest: '<%= path.tmpdev %>'
+		}]
+	},
+	dist: {
+		options: {
+			flatten: true,
+			expand: true
+		},
+		files: [{
+			cwd: '<%= path.src %>',
+			src: '**/*.{htm,html}',
+			dest: '<%= path.dist %>'
+		}]
 	}
 }

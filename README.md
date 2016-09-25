@@ -1,57 +1,38 @@
 # CRUNT
+아래 환경이 구축되어야 사용이 가능합니다.
 
+* Node.js v6.6.0 - [http://nodejs.org/](http://nodejs.org/)
+* Grunt cli v1.2.0 - [https://github.com/gruntjs/grunt-cli](https://github.com/gruntjs/grunt-cli)
+* > "npm install -g grunt-cli" (in nodejs)
+* ruby - [http://rubyinstaller.org/downloads/](http://rubyinstaller.org/downloads/)
+* Sass - [http://www.sass-lang.com/](http://www.sass-lang.com/)
+* > "gem install sass" (in ruby)
+* 그 외는 [package.json](https://github.com/croot-git/crunt/blob/master/package.json)을 참고 바람.
 
-이건 어디까지나 내 개인적인 grunt임니다.
+## PATH
+    src: 'src',
+    dist: 'dist',
+    tmp: '.tmp',
+	tmpdev: '.tmp/dev',
+	tmpdist: '.tmp/dist',
+    docs: 'docs',
+	conf : 'config'
 
-남이 사용하는걸 뭐 어떻게 말릴 순 없지만 써볼테면 써보던가!
+## TASK FLOW
+#### default
+    'clean:build',
+    'copy:dev',
+	'sass:dev',
+	'autoprefixer:dev',
+	'includes:dev',
+	'jsbeautifier:dev',
+	'connect:server',
+	'watch'
 
-이거 crunt쓸려면 아래 소프트웨어들 있어야댐니다
-
-* Node.js - [http://nodejs.org/](http://nodejs.org/)
-* Grunt CLI - [https://github.com/gruntjs/grunt-cli](https://github.com/gruntjs/grunt-cli)
-* Sass - [http://sass-lang.com/install](http://sass-lang.com/install)
-
-## dist
-### CSS flow
-> #### 1. sass
-
->> sass문법을 css로 변경
-
->> [path.src]/\*.sass => [path.tmp]/*.css
-
-
-> #### 2. csscomb:dist
-
->> [path.tmp]/\*.css => [path.tmp]/*.css
-
-
-> #### 3. autoprefixer:dist
-
->> css prefix를 추가
-
->> [path.tmp]/\*.css => [path.tmp]/*.css
-
-
-> #### 4. csslint:dist
-
->> css 파일 유효성 검사
-
->> [path.doc]/csslint.txt
-
-
-> #### 5. cssmin:target
-
->> css 파일을 압축함
-
->> [path.tmp].css => [path.dist].css
-
-### JS flow
-
-> #### 1. jshint:dist
-
-> #### 2. uglify:dist
-
-
-### HTML flow
-
-> #### 1. includes:files
+#### dist
+    'clean:dist',
+	'copy:dist',
+	'sass:dist',
+	'autoprefixer:dist',
+	'includes:dist',
+	'jsbeautifier:dist' //do nothing

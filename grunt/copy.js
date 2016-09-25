@@ -3,7 +3,7 @@ module.exports = {
 		files: [{
 			expand: true,
 			cwd: '<%= path.src %>',
-			src: ['**/*.{css,js}'],
+			src: ['**/*.{css,min.js,json}'],
 			dest: '<%= path.tmpdev %>'
 		}],
 	},
@@ -11,7 +11,7 @@ module.exports = {
 		files: [{
 			expand: true,
 			cwd: '<%= path.src %>',
-			src: ['**/*.min.{css,js}','**/{lib,libs}/*.js'],
+			src: ['**/*.{css,min.js,json}'],
 			dest: '<%= path.dist %>'
 		}],
 	}

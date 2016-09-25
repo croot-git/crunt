@@ -1,48 +1,28 @@
 module.exports = {
 	'test': [
-		'sprite:dev'
+		//testing task
+		'clean:build',
+		'includes:dev',
 	],
 	'default': [
 		'clean:build',
 		'copy:dev',
 		'sass:dev',
-		'csscomb:dev',
 		'autoprefixer:dev',
-		'csslint:dev',
-		'jshint:dev',
-//		'sprite:dev',
 		'includes:dev',
-		'connect:server'
+		'jsbeautifier:dev',
+		'connect:server',
+		'watch'
 	],
 	'dist': [
 		'clean:dist',
 		'copy:dist',
 		'sass:dist',
-		'csscomb:dist',
 		'autoprefixer:dist',
-		'cssmin:target',
-		'uglify:dist',
-		'includes:files'
+		'includes:dist',
+		'jsbeautifier:dist' //do nothing
 	],
-	'webfont': []
-/*******************************
-	'html': [
-		'includes:files'
-	],
-	'css': [
-		'sass:dist',
-		'csscomb:dist',
-		'autoprefixer:dist',
-		'cssmin:target'
-	],
-	'js': [
-		'concat:dist',
-		'uglify:dist'
-	],
-	'lint': [
-		'htmlhint',
-		'csslint',
-		'jshint:dist'
-	]
-*******************************/
+	//v2.0.0
+	'webfont': [],
+	'splite': []
 }
