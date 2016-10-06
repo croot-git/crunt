@@ -1,8 +1,8 @@
 module.exports = {
 	dev: {
-		cwd: ['<%= path.tmpdev %>'],
-		src: ['**/*.{js,json,html}','!**/*.min.js'],
+		src: ['<%= path.tmpdev %>**/*.{js,json,html}','!**/*.min.js'],
 	},
 	dist: {
+		src: ['<%= path.tmpdist %>**/*.{js,json,html}','!**/*.min.js'],
 	}
 }
