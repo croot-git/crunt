@@ -3,10 +3,12 @@
 
 * Node.js v6.6.0 - [http://nodejs.org/](http://nodejs.org/)
 * Grunt cli v1.2.0 - [https://github.com/gruntjs/grunt-cli](https://github.com/gruntjs/grunt-cli)
-* > "npm install -g grunt-cli" (in nodejs)
+  > "npm install -g grunt-cli" (in nodejs)
+
 * ruby - [http://rubyinstaller.org/downloads/](http://rubyinstaller.org/downloads/)
 * Sass - [http://www.sass-lang.com/](http://www.sass-lang.com/)
-* > "gem install sass" (in ruby)
+  > "gem install sass" (in ruby)
+  
 * 그 외는 [package.json](https://github.com/croot-git/crunt/blob/master/package.json)을 참고 바람.
 
 ## PATH
