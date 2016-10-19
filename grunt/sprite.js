@@ -1,16 +1,24 @@
 module.exports = {
 	options: {
-		algorithms: 'binary-tree',
-		cssFormat: 'scss'
-	},
-	dist: {
-		src: '<%= path.src %>/images/sprites/*.png',
-		dest: '<%= path.dist %>/images/sp_common.png',
-		destCss: '<%= path.tmpdist %>/css/sprite.css'
+		algorithms: "binary-tree",
+		cssFormat: "css"
 	},
 	dev: {
-		src: '<%= path.src %>/images/sprites/*.png',
-		dest: '<%= path.tmpdev %>/images/sp_common.png',
-		destCss: '<%= path.tmpdev %>/css/sprite.scss'
+		scss: {
+			options: { cssFormat: "scss" },
+			src: "<%= path.src %>/images/sprites/*.png",
+			dest: "<%= path.src %>/images/<%= path.spliteImage %>.png",
+			destCss: "<%= path.src %>/css/sprite.scss"
+		},
+		css: {
+			src: "<%= path.src %>/images/sprites/*.png",
+			dest: "<%= path.build %>/images/<%= path.spliteImage %>.png",
+			destCss: "<%= path.build %>/css/sprite.css"
+		}
+	},
+	dist: {
+		src: "<%= path.src %>/images/sprites/*.png",
+		dest: "<%= path.tmpdist %>/images/<%= path.spliteImage %>.png",
+		destCss: "<%= path.tmpdist %>/css/sprite.css"
 	}
 }

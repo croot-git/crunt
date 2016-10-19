@@ -1,26 +1,29 @@
 module.exports = {
 	options: {
-		style: 'compact',
+		style: "compact",
 		noCache: true,
 		update: true,
-		usemap: false
+		//usemap: true
 	},
 	dist: {
+		options: {
+			usemap: false
+		},
 		expand: true,
-		cwd: '<%= path.src %>',
-		src: ['**/*.{scss,sass}'],
-		dest: '<%= path.tmpdist %>',
-		ext: '.css'
+		cwd: "<%= path.src %>",
+		src: ["**/*.{scss,sass}"],
+		dest: "<%= path.tmpdist %>",
+		ext: ".css"
 	},
 	dev: {
 		options: {
 			trace: true,
-			cacheLocation: '<%= path.tmp %>/.sass/',
+			cacheLocation: "<%= path.tmp %>/.sass/",
 		},
 		expand: true,
-		cwd: '<%= path.src %>',
-		src: ['**/*.{scss,sass}'],
-		dest: '<%= path.tmpdev %>',
-		ext: '.css'
+		cwd: "<%= path.src %>",
+		src: ["**/*.{scss,sass}"],
+		dest: "<%= path.build %>",
+		ext: ".css"
 	}
 }

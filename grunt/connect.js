@@ -1,10 +1,10 @@
 module.exports = {
 	server : {
 		options: {
-			protocol: 'http',
+			protocol: "http",
 			port: 8080,
 			useAvailablePort: true,
-			base: ['<%= path.tmpdev %>'],
+			base: ["<%= path.serverRoot %>"],
 			open: true,
 		}
 	}

@@ -14,9 +14,9 @@ module.exports = {
 	dev: {
 		files: [{
 			expand: true,
-			cwd: '<%= path.tmpdev %>',
+			cwd: '<%= path.build %>',
 			src: ['**/*.css','!**/*.min.css'],
-			dest: '<%= path.tmpdev %>',
+			dest: '<%= path.build %>',
 			ext: '.css'
 		}]
 	}
